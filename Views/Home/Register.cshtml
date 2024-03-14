@@ -1,0 +1,56 @@
+﻿@model progetto_settimanaleS19L5.Models.Utente
+
+@{
+    ViewBag.Title = "Registrazione";
+}
+
+<h5 class="fw-normal mb-3" style="letter-spacing: 1px;">Crea un nuovo account</h5>
+
+@using (Html.BeginForm())
+{
+    <div id="inputRegistration" class="form-outline mb-4">
+        <div class="mb-3">
+            @Html.TextBoxFor(model => model.Nome, new { @class = "form-control form-control-lg", placeholder = "Nome" })
+            @Html.ValidationMessageFor(model => model.Nome, "", new { @style = "color: red" })
+        </div>
+        <div class="mb-3">
+            @Html.TextBoxFor(model => model.Cognome, new { @class = "form-control form-control-lg", placeholder = "Cognome" })
+            @Html.ValidationMessageFor(model => model.Cognome, "", new { @style = "color: red" })
+        </div>
+        <div class="mb-3">
+            @Html.TextBoxFor(model => model.Provincia, new { @class = "form-control form-control-lg", placeholder = "Provincia" })
+            @Html.ValidationMessageFor(model => model.Provincia, "", new { @style = "color: red" })
+        </div>
+        <div class="mb-3">
+            @Html.TextBoxFor(model => model.Citta, new { @class = "form-control form-control-lg", placeholder = "Città" })
+            @Html.ValidationMessageFor(model => model.Citta, "", new { @style = "color: red" })
+        </div>
+        <div class="mb-3">
+            @Html.TextBoxFor(model => model.Indirizzo, new { @class = "form-control form-control-lg", placeholder = "Indirizzo" })
+            @Html.ValidationMessageFor(model => model.Indirizzo, "", new { @style = "color: red" })
+        </div>
+        <div class="mb-3">
+            @Html.TextBoxFor(model => model.Email, new { @class = "form-control form-control-lg", placeholder = "Email" })
+            @Html.ValidationMessageFor(model => model.Email, "", new { @style = "color: red" })
+        </div>
+        <div class="mb-3">
+            @Html.PasswordFor(model => model.Password, new { @class = "form-control form-control-lg", placeholder = "Password" })
+            @Html.ValidationMessageFor(model => model.Password, "", new { @style = "color: red" })
+        </div>
+    </div>
+
+    if (ViewBag.RegistrationError != null)
+    {
+        <div class="alert alert-danger">
+            @ViewBag.RegistrationError
+        </div>
+    }
+
+    <div class="pt-1 mb-4 d-flex align-items-center">
+        <button type="submit" class="btn btn-outline-success">Registrati</button>
+    </div>
+}
+
+<p>Hai già un account? <a href="@Url.Action("Login", "Home")">Accedi da qui</a></p>
+
+

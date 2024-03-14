@@ -1,0 +1,36 @@
+﻿@model progetto_settimanaleS19L5.Models.Utente
+
+@{
+    ViewBag.Title = "Login";
+}
+
+
+<h5 class="fw-normal mb-3" style="letter-spacing: 1px;">Entra con il tuo account</h5>
+
+@using (Html.BeginForm())
+{
+    <div id="inputlogin" class="form-outline mb-4">
+        <div class="mb-3">
+            @Html.TextBoxFor(model => model.Email, new { @class = "form-control form-control-lg", placeholder = "Username" })
+            @Html.ValidationMessageFor(model => model.Email, "", new { @style = "color: red" })
+        </div>
+        @Html.PasswordFor(model => model.Password, new { @class = "form-control form-control-lg", placeholder = "Password" })
+        @Html.ValidationMessageFor(model => model.Password, "", new { @style = "color: red" })
+    </div>
+
+    if (ViewBag.AuthError != null)
+    {
+        <div class="alert alert-danger">
+            @ViewBag.AuthError
+        </div>
+    }
+
+    <div class="pt-1 mb-4 d-flex align-items-center">
+        <button type="submit" class="btn btn-outline-success">Login</button>
+    </div>
+}
+
+<p>Non hai ancora un account? <a href="@Url.Action("Register", "Home")">Registrati qui</a></p>
+
+
+
