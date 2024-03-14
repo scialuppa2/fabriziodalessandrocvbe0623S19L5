@@ -1,0 +1,45 @@
+﻿@model IEnumerable<progetto_settimanaleS19L5.Models.Utente>
+
+@{
+    ViewBag.Title = "ListaUtente";
+}
+
+<h2 class="text-center">Lista Clienti</h2>
+
+<div class="table-responsive">
+    <table class="table table-striped table-hover">
+        <thead class="thead-dark">
+            <tr>
+                <th>Nome</th>
+                <th>Cognome</th>
+                <th>Provincia</th>
+                <th>Città</th>
+                <th>Indirizzo</th>
+                <th>Email</th>
+                <th>Azioni</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.Nome)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Cognome)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Provincia)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Citta)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Indirizzo)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Email)</td>
+                    <td>
+                        <form method="post" action="@Url.Action("EliminaUtente", "Utente")">
+                            @Html.Hidden("id", item.IdUtente)
+                            <button type="submit" class="btn btn-outline-danger">Elimina</button>
+                        </form>
+                    </td>
+                    <td>
+                        <a href="@Url.Action("ModificaUtente", "Utente", new { id = item.IdUtente })" class="btn btn-outline-secondary">Modifica</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

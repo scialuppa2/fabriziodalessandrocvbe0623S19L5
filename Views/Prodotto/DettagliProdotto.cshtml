@@ -1,0 +1,47 @@
+﻿
+@model progetto_settimanaleS19L5.Models.Prodotto
+
+<h4 class="text-center">Dettagli Prodotto</h4>
+<hr />
+<dl class="dl-horizontal">
+    <dt>
+        @Html.DisplayNameFor(model => model.Nome)
+    </dt>
+    <dd>
+        @Html.DisplayFor(model => model.Nome)
+    </dd>
+
+    <dt>
+        @Html.DisplayNameFor(model => model.FotoUrl)
+    </dt>
+    <dd>
+        <img src="@Model.FotoUrl" class="card-img-top" style="height: 200px; width: 260px" alt="@Model.Nome">
+    </dd>
+
+    <dt>
+        @Html.DisplayNameFor(model => model.Prezzo)
+    </dt>
+    <dd>
+        @Html.DisplayFor(model => model.Prezzo)
+    </dd>
+
+    <dt>
+        @Html.DisplayNameFor(model => model.TempoConsegna)
+    </dt>
+    <dd>
+        @Html.DisplayFor(model => model.TempoConsegna)
+    </dd>
+
+    <dt>
+        @Html.DisplayNameFor(model => model.Ingredienti)
+    </dt>
+    <dd>
+        @Html.DisplayFor(model => model.Ingredienti)
+    </dd>
+
+    <div class="text-center">
+        @Html.ActionLink("Torna al Menu", "Menu", "Home", null, new { @class = "btn btn-outline-secondary" })
+    </div>
+</dl>
+
+

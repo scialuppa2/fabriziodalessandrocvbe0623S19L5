@@ -42,24 +42,19 @@ namespace progetto_settimanaleS19L5.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult CreaProdotto(Prodotto prodotto, HttpPostedFileBase FotoUrl)
+        public ActionResult CreaProdotto(Prodotto prodotto)
         {
-
-            string nomeFile = FotoUrl.FileName;
-            string pathToSave = Path.Combine(Server.MapPath("~/Content/imgs"), nomeFile);
-            FotoUrl.SaveAs(pathToSave);
-
-            prodotto.FotoUrl = nomeFile;
-
             if (ModelState.IsValid)
             {
                 db.Prodotto.Add(prodotto);
                 db.SaveChanges();
+
                 return RedirectToAction("ListaProdotto");
             }
 
             return View(prodotto);
         }
+
 
         public ActionResult ModificaProdotto(int? id)
         {

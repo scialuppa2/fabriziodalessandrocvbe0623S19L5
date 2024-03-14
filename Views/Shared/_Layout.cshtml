@@ -27,10 +27,10 @@
                         if (User.IsInRole("Admin"))
                         {
                             <li class="nav-item">
-                                @Html.ActionLink("Gestione Prodotti", "ActionName", "ControllerName", new { area = "" }, new { @class = "nav-link" })
+                                @Html.ActionLink("Gestione Prodotti", "ListaProdotto", "Prodotto", new { area = "" }, new { @class = "nav-link" })
                             </li>
                             <li class="nav-item">
-                                @Html.ActionLink("Gestione Utenti", "ActionName", "ControllerName", new { area = "" }, new { @class = "nav-link" })
+                                @Html.ActionLink("Gestione Utenti", "ListaUtente", "Utente", new { area = "" }, new { @class = "nav-link" })
                             </li>
                             <li class="nav-item">
                                 @Html.ActionLink("Gestione Ordini", "ActionName", "ControllerName", new { area = "" }, new { @class = "nav-link" })

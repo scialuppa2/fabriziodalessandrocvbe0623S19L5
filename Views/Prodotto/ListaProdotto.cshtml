@@ -1,0 +1,51 @@
+﻿
+@model IEnumerable<progetto_settimanaleS19L5.Models.Prodotto>
+
+@{
+    ViewBag.Title = "ListaProdotto";
+}
+
+<h2 class="text-center">Gestione prodotti del Menù</h2>
+
+<div>
+    <a href="@Url.Action("CreaProdotto")" class="btn btn-outline-primary">Aggiungi un prodotto</a>
+</div>
+
+<hr />
+
+<div class="row">
+    @if (Model != null && Model.Any())
+    {
+        foreach (var prodotto in Model)
+        {
+            <div class="col-md-4">
+                <div class="card mb-4" style="width: 18rem;">
+                    <img src="@prodotto.FotoUrl" class="card-img-top" alt="Immagine del Prodotto" style="height: 200px;">
+                    <div class="card-body">
+                        <h5 class="card-title">@prodotto.Nome</h5>
+                        <p class="card-text">Prezzo: @prodotto.Prezzo</p>
+                        <p class="card-text">Tempo di consegna: @prodotto.TempoConsegna min</p>
+                        <p class="card-text flex-grow-1">Ingredienti: @prodotto.Ingredienti</p>
+                        <div class="d-inline-block">
+                            @Html.ActionLink("Modifica", "ModificaProdotto", new { id = prodotto.IdProdotto }, new { @class = "btn btn-outline-secondary" })
+                        </div>
+
+                        <div class="d-inline-block ml-2">
+                            <form method="post" action="@Url.Action("EliminaProdotto", "Prodotto")">
+                                @Html.Hidden("id", prodotto.IdProdotto)
+                                <button type="submit" class="btn btn-outline-danger">Rimuovi Prodotto</button>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        }
+    }
+    else
+    {
+        <p>Nessun prodotto disponibile.</p>
+    }
+</div>
+
+<!-- Aggiungi qui un link per aggiungere un nuovo prodotto, se necessario -->
