@@ -110,9 +110,10 @@ namespace progetto_settimanaleS19L5.Controllers
             }
             else
             {
-                return View("Menu");
+                return View();
             }
         }
+
 
         [HttpPost]
         public ActionResult AggiungiAlCarrello(int id, string nome, decimal prezzo, int quantita)
