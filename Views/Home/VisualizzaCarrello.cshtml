@@ -57,30 +57,34 @@
     {
         <p>Il tuo carrello è vuoto.</p>
     }
-    @using (Html.BeginForm("ConcludiOrdine", "Home", FormMethod.Post))
+    @if (Model != null && Model.Any())
     {
-        <div class="form-group mb-3">
-            @Html.LabelFor(model => model.First().IndirizzoConsegna, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.First().IndirizzoConsegna, new { htmlAttributes = new { @class = "form-control" } })
+        using (Html.BeginForm("ConcludiOrdine", "Home", FormMethod.Post))
+        {
+            <div class="form-group mb-3">
+                @Html.LabelFor(model => model.First().IndirizzoConsegna, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.First().IndirizzoConsegna, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
             </div>
-        </div>
 
-        <div class="form-group mb-3">
-            @Html.LabelFor(model => model.First().NoteSpeciali, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.TextAreaFor(model => model.First().NoteSpeciali, new { @class = "form-control" })
+            <div class="form-group mb-3">
+                @Html.LabelFor(model => model.First().NoteSpeciali, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextAreaFor(model => model.First().NoteSpeciali, new { @class = "form-control" })
+                </div>
             </div>
-        </div>
 
-        <input type="submit" value="Concludi Ordine" class="btn btn-outline-primary mb-3" />
+            <input type="submit" value="Concludi Ordine" class="btn btn-outline-primary mb-3" />
+        }
     }
 
-<div class="row mt-4">
-    <div class="col text-center">
-        @Html.ActionLink("Torna alla Home", "Index", "Home", null, new { @class = "btn btn-outline-secondary" })
+
+    <div class="row mt-4">
+        <div class="col text-center">
+            @Html.ActionLink("Torna alla Home", "Index", "Home", null, new { @class = "btn btn-outline-secondary" })
+        </div>
     </div>
-</div>
 
 </div>
 

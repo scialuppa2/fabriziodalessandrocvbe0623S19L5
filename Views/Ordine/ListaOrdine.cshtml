@@ -1,0 +1,78 @@
+﻿@model IEnumerable<progetto_settimanaleS19L5.Models.Ordine>
+
+@{
+    ViewBag.Title = "ListaOrdine";
+    bool isAdmin = User.IsInRole("Admin");
+}
+
+<h2 class="text-center">Lista Ordini</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Utente.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DataOrdine)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Importo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IndirizzoConsegna)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NoteSpeciali)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Evaso)
+        </th>
+        @if (isAdmin)
+        {
+            <th></th>
+            <th></th>
+        }
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Utente.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataOrdine)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Importo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IndirizzoConsegna)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NoteSpeciali)
+            </td>
+            <td>
+                @if (item.Evaso)
+                {
+                    <span>Confermato</span>
+                }
+                else
+                {
+                    <span>In Attesa</span>
+                }
+            </td>
+
+            @if (isAdmin)
+            {
+                <td>
+                    @Html.ActionLink("Modifica", "ModificaOrdine", new { id = item.IdOrdine }, new { @class = "btn btn-outline-secondary" })
+                </td>
+                <td>
+                    @Html.ActionLink("Elimina", "EliminaOrdine", new { id = item.IdOrdine }, new { @class = "btn btn-outline-danger" })
+                </td>
+            }
+        </tr>
+    }
+
+</table>

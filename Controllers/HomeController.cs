@@ -172,8 +172,12 @@ namespace progetto_settimanaleS19L5.Controllers
         [HttpPost]
         public ActionResult ConcludiOrdine(string indirizzoConsegna, string noteSpeciali)
         {
+            int userId = 0;
 
-            int userId = (int)Session["UserId"];
+            if (Session["UserId"] != null && Session["UserId"] is int)
+            {
+                userId = (int)Session["UserId"];
+            }
 
             if (userId == 0)
             {

@@ -23,7 +23,7 @@ namespace progetto_settimanaleS19L5.Models
 
         public DateTime DataOrdine { get; set; }
 
-        public decimal? Importo { get; set; }
+        public decimal Importo { get; set; }
 
         [StringLength(255)]
         public string IndirizzoConsegna { get; set; }
@@ -31,7 +31,7 @@ namespace progetto_settimanaleS19L5.Models
         [StringLength(255)]
         public string NoteSpeciali { get; set; }
 
-        public bool? Evaso { get; set; }
+        public bool Evaso { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DettaglioOrdine> DettaglioOrdine { get; set; }

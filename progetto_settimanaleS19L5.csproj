@@ -257,10 +257,12 @@
     <Content Include="Views\Prodotto\DettagliProdotto.cshtml" />
     <Content Include="Views\Utente\ListaUtente.cshtml" />
     <Content Include="Views\Utente\ModificaUtente.cshtml" />
+    <Content Include="Views\Ordine\ListaOrdine.cshtml" />
+    <Content Include="Views\Ordine\ModificaOrdine.cshtml" />
+    <Content Include="Views\Ordine\ControlloOrdine.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Ordine\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Scripts\bootstrap.min.js.map" />

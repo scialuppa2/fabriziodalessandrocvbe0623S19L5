@@ -87,28 +87,26 @@ namespace progetto_settimanaleS19L5.Controllers
         [HttpPost]
         public JsonResult OrdiniEvasi()
         {
-            {
-                DateTime today = DateTime.Today;
-                DateTime tomorrow = today.AddDays(1);
+            List<Ordine> ordiniEvasi = db.Ordine.Where(o => o.Evaso).ToList();
 
-                List<Ordine> ordine = db.Ordine.Where(a => a.Evaso == true && a.DataOrdine >= today && a.DataOrdine < tomorrow).ToList();
-                List<OrdineEvaso> ordineEvaso = new List<OrdineEvaso>();
+            int totaleOrdiniEvasi = ordiniEvasi.Count();
 
-                foreach (var o in ordine)
-                {
-                    ordineEvaso.Add(new OrdineEvaso
-                    {
-                        Id = o.IdUtente,
-                        Nome = o.Utente.Nome,
-                        TotaleOrdiniOggi = ordine.Count()
-                    });
-                }
-
-                return Json(ordineEvaso);
-            }
+            return Json(totaleOrdiniEvasi);
         }
 
-        
+        [HttpPost]
+        public JsonResult OrdineByData(DateTime inputVal)
+        {
+            DateTime tomorrow = inputVal.AddDays(1);
+
+            List<Ordine> ordine = db.Ordine.Where(a => a.Evaso == true && a.DataOrdine >= inputVal && a.DataOrdine < tomorrow).ToList();
+
+            decimal TotaleIncasso = ordine.Sum(o => o.Importo);
+
+            return Json(TotaleIncasso);
+        }
+
+
 
     }
 }
